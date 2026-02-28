@@ -1,0 +1,13 @@
+---
+title: "About"
+---
+
+## Welcome!
+
+My name is Zack. I live in Charlottesville, VA, but this is my cozy little corner of the internet where I've decided to set up shop. Put your feet up and stay awhile.
+
+I'm a software engineer by trade, but I'm interested in lots of things. You'll most likely find posts here about computer science, hobby programming, good books / podcasts / music, table top RPGs, and travel. However, it will be threaded through by whatever other random things I encounter that seem interesting or that I want to share.
+
+I don't intend for there to be a central theme for this blog, aside from it being a place I can write and share photos and such outside of social media, which I do not maintain.
+
+Because this is my personal blog, all thoughts presented here are my own and do not reflect those of my current employer. Or anyone else, for that matter. It's just Zack all the way down.

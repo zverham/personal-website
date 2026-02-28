@@ -1,0 +1,19 @@
+---
+title: Hot Corgi Summer - A Short List of Small Wonders
+date: 2021-06-19
+---
+
+Today, my sister-in-law asked me what I'm currently most excited about. That is such a good question - its so easy for me to roll through life, just trying to make sure I hit all the checkboxes on things I feel like I'm supposed to do, and I forget that there *are* lots of things to be excited about. I answered that, honestly, I'm probably most excited for how late the sun sets in the evenings during the summer. I don't think I realized until now how much the cold dark nights of self-imposed COVID quarantines really did take their toll. Being able to go places and see people and do things and sit outside on my back porch at 8PM - I think those simple things are really, geniunely, what I'm currently most excited about.
+
+Some other things that are really just * *chef's kiss* * right now: 
+
+- I'm sure I'll make a bigger post about this at some point, but I've been working on building a digital character sheet for the game *Call of Cthulhu* as a bit of a hobby programming project. The utility of [DnD Beyond](https://www.dndbeyond.com/) for *Dungeons and Dragons* is really impossible to overstate, and as far as I can tell, an equivalent digital character sheet implementation doesn't exist for *Call of Cthulhu*. It's been really fun getting to decide on what technologies to use and getting in some programming practice while building something that will actually be useful and valuable for when we play. I'm thinking I'll probably set it up on a Raspberry Pi soon and try to run a beta test with it. 
+- It goes without saying, but [Call of Cthulhu](https://www.chaosium.com/call-of-cthulhu-getting-started/) is super fun. 
+- Being terrified by *Resident Evil 7*
+- Being terrified and emotionally overwhelmed by [Hellblade: Senua's Sacrifice](https://en.wikipedia.org/wiki/Hellblade:_Senua%27s_Sacrifice)
+- Being terrified (and less emotionally overwhelmed, more just scared) by the [trailer](https://www.youtube.com/watch?v=2TR0gaG01do) for *Hellblade 2*.
+- The [besties](https://www.themcelroy.family/besties) confirming that I need to play Resident Evil 8 sooner rather than later. 
+- Visiting the [Roanoake Star](https://www.visitroanokeva.com/things-to-do/attractions/roanoke-star/) and watching a friend play covers at a brewery.
+- Reading *the Exorcist* and being surprised by how relatable Father Karras' wild swings between faith and doubt are. 
+- Sleepy Corgis: ![](img/sleepy-corgi.jpeg)
+

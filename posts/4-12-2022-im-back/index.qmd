@@ -1,0 +1,10 @@
+---
+title: I'm Back
+date: 2022-04-12
+---
+
+It has been awhile, huh? I'll try to get back to updating this space more frequently. 
+
+I just read [this piece published over at the Atlantic](https://www.theatlantic.com/magazine/archive/2022/05/social-media-democracy-trust-babel/629369/) that reminded me why I deleted my Facebook and decided to switch over to writing a blog in the first place. Admittedly, I'm still addicted to doomscrolling Twitter and Reddit. Maybe it'd be good to wean myself off of those too. 
+
+I don't really have a ton to say, just wanted to share that essay and update Gatsby (the framework that's running this blog). Ya know - make sure I could still actually build the site. I will try to write little things more frequently here, though.

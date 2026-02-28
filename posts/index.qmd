@@ -1,0 +1,10 @@
+---
+title: "Posts"
+listing:
+  contents: "."
+  sort: "date desc"
+  type: default
+  date-format: "MMM D, YYYY"
+  fields: [date, title, description]
+page-layout: full
+---

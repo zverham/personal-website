@@ -1,0 +1,153 @@
+---
+title: Re-writing my Blog Tooling and Naming it After my Dog
+date: 2023-02-06
+---
+
+Well howdy there. It's been awhile.
+
+As I'm sure you can tell, I haven't posted here in quite awhile. Its one of those things that sort of creeps up on you - I didn't realize it had been so long until, well, it had been a really long time. 
+
+That got me to thinking about *why* it had been so long since I had last written anything. Of course some of the delay is driven by life doing what it does: things get busy, I get distracted by other hobbies, I don't especially feel like writing, and so on and so on.
+
+But I realized, after thinking about it a bit, that really, the crux of the issue was simply that I didn't want to have to run `npm install` on my bloated Gatsby project again and deal with the maintenance overhead. That was really about it. Well, that, and having to remind myself how Gatsby actually works in the first place was just a huge drag and a large enough burden that I'd end up finding fun doing other things instead. 
+
+Don't get me wrong - Gatsby is a really, really cool project. You can do tons of powerful, incredible things with it. But for what I want - just static html files with some minimal css to make them, at the very least, not terrible to look at - Gatsby is doing way, way too much. 
+
+In fact, really for what I want, most static site generators are doing way, way, too much. Not that that's a fault of those projects - they're trying to cover a lot of different use cases. But that additional functionality comes with its own overhead - both in terms of the time required to build the project and maintain its dependencies, and in terms of the mental overhead required when I have to remind myself how the project actually converts content into a webpage (let alone if I have to try to modify or update that conversion process). 
+
+Thus, in my hubris, I decided that I would write my own static site generator to create this website. I know there are fifty million reasons to *not* do this, but I have two justifications that, at least in my mind, make sense: 
+
+1. I'm writing this to do the minimum amount possible to build this specific site, so it should be blazing fast, simple to maintain, and therefore lower my barrier to writing more frequently.
+
+2. Programming is fun. Writing things and making computers do things is fun. Whatever.
+
+Since all good site generators need a good name, I decided to name mine `ses`, after my Corgi, Sesame. The name ultimately works because (a) Sesame is v smol, and (b) Sesame is highly opinionated and inflexible. Both are features of my static site generator. 
+
+`ses` is written in Go. Its `build` command is mind-numblingly simple: 
+
+`ses` looks in the working directory for a `posts` directory, which contains all my blog content. The URL slug for each `post` is the name of a subdirectory containing all of that post's content: 
+
+```bash
+# Yes, I know I need to settle on a naming convention for my content. I'm trying.
+➜  posts git:(main) ✗ ls
+10-19-2020                  2021-04-25-spring-roadtrip  4-12-2022-im-back           a-first-post
+10-25-2020                  2021-05-01-happy-may        7-16-2020                   odyssey-to-the-west
+11-21-2020                  2021-06-19-hot-corgi-summer 8-3-2020
+2021-02-27                  2022-04-27-goguelike        9-17-2020
+2021-03-02                  2023-02-06-blog-tooling     9-6-2021-summer-wrapup
+```
+
+`ses` then looks for an `index.md` file in each post directory, which contains the content of the post, written in markdown.
+
+Each `index.md` file contains some simple metadata in a frontmatter preamble which is encoded as yaml. 
+
+```yaml
+title: a title
+date: 2023-01-01
+```
+
+The only non-trivial header component is the `tmpl` field. This notes which template to use when rendering the post as `html`. More on that in a second.
+
+The subsequent markdown content in the file is rendered to html using the `gomarkdown` library the code to apply the conversion very simple:
+
+```go
+mdBytes := markdown.ToHTML(markdownContent.Bytes(), nil, nil)
+post.Content = string(mdBytes)
+return post
+```
+
+Assets - like images, for example - are expected to be in an `assets` subdirectory for each post and are simply copied to the final output location. 
+
+To keep things as simple as possible, I included the notion of "singleton" pages, which are html pages that are copied directly to the output location. Singleton pages are content that I don't expect to change often for which there is no need or reason to template anything or perform any conversions. The `about` page is a good example of this type of content. These are copied directly to the output location. 
+
+For styling I bundle in the Pico CSS framework - its extremely tiny, simple, and unintrusive, which is the whole goal of this rewrite. So its perfect!
+
+The only JS component I'm including at this point is `prism.js` which gives me the fancy code syntax highlighting you see in the Go snipped above. This is another direct copy to the output location. 
+
+The final piece of the puzzle is the templating that embeds the html-ified markdown into a full html document. Luckily, go has pretty robust templating, so I was able to do this without introducing any external dependencies. Here's the `post.tmpl` file in its entirety: 
+
+```gotmpl
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>{{.Title}}</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="/assets/css/prism.css" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/css/pico.min.css">
+<body>
+<script src="/assets/js/prism.js"></script>
+<div class="hero" data-theme="dark">
+    <nav class="container-fluid">
+        <ul></ul>
+        <ul>
+            <li><a href="/about">About</a></li>
+            <li><a href="/writing">Writing</a></li>
+        </ul>
+    </nav>
+    <header class="container">
+        <hgroup>
+            <h1><a href="/" class="contrast">Zack Verham</a></h1>
+            <h2>My little slice of the internet</h2>
+        </hgroup>
+    </header>
+</div>
+
+<div class="container">
+    <h2>{{.Title}}</h2>
+    <h5>{{.Date.Format "Jan 02, 2006"}}</h5>
+    <main>{{.Content}}</main>
+</div>
+</body>
+</html>
+```
+
+So now, when I build the project (using  `just` to simplify the cli tooling a bit):
+
+```bash
+➜  blog-content git:(main) ✗ just build
+../ses/ses build
+INFO[0000] Building from: /Users/zackverham/Development/blog-content
+INFO[0000] Clearing public dir
+INFO[0000] Iterating through 2 singleton pages
+INFO[0000] Processing singleton /Users/zackverham/Development/blog-content/singletons/about.html
+INFO[0000] Processing singleton /Users/zackverham/Development/blog-content/singletons/writing.html
+INFO[0000] Iterating through 18 post(s)
+WARN[0000] Unexpected file in posts dir: .DS_Store
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/10-19-2020/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/10-25-2020/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/11-21-2020/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/2021-02-27/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/2021-03-02/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/2021-04-25-spring-roadtrip/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/2021-05-01-happy-may/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/2021-06-19-hot-corgi-summer/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/2022-04-27-goguelike/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/2023-02-06-blog-tooling/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/4-12-2022-im-back/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/7-16-2020/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/8-3-2020/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/9-17-2020/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/9-6-2021-summer-wrapup/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/a-first-post/index.md
+INFO[0000] Processing post: /Users/zackverham/Development/blog-content/posts/odyssey-to-the-west/index.md
+INFO[0000] Constructing index.html
+INFO[0000] Copying css...
+INFO[0000] Copying js...
+INFO[0000] DONE.
+```
+
+That's it! I end up with a `public` directory that contains simple and easily comprehensible static html documents, with a bit of css and js to make things pretty but don't do anything fancy that will gunk things up. The site should be blazing fast because - again, just static html - and if I want to change anything in the future,  `ses` is just a few files that *I wrote in the first place*. Easy. 
+
+Netlify makes static file deployment from the command line easy and fast. It even has tools for deploying a test instance of the site before going live: 
+
+```bash
+sudo netlify deploy --dir=public
+```
+
+And again, any publication workflows I can hide behind `just`, making everything super simple and easy to remember. 
+
+Are there "problems" with this design? Sure. I could use partial templates to define the header / nav content in a single location. I could do error handling better. I could improve the file parsing and logging to handle that annoying `.DS_Store` file. And maybe as I continue to tinker with `ses` I'll handle those things. But at the same time, `ses` is a functional tool that is getting things done and meeting the threshold necessary to get me back to writing. I'm willing to accept those imperfections now to get this post down in a document and published. And regardless, `ses` is mine anyways! Noone is relying on those updates and improvements. Literally noone cares, and that is *fantastic*.
+
+What was the point of writing all this up? Partially, I consider it a test to see if its easier / more pleasurable to publish content now. Partially, I'm hoping to maybe illustrate some takeaway that writing non-generalizable tools for fun that make your life a bit easier is worthwhile and enjoyable. 
+
+But really, I just wanted to share something cool that I hacked out over a couple of flights and get back to writing again - which is the whole point of this blog in the first place. 

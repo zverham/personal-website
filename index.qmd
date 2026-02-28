@@ -1,0 +1,11 @@
+---
+title: "Zack Verham"
+subtitle: "My little slice of the internet"
+page-layout: full
+---
+
+Hi, I'm Zack. I live in Charlottesville, VA. This is my cozy little corner of the internet.
+
+I'm a software engineer by trade, but I write here about whatever catches my interest — computer science, hobby programming, books, podcasts, music, tabletop RPGs, travel, and whatever else seems worth sharing.
+
+Take a look at my [posts](/posts), see some of my [writing](/writing) elsewhere, or learn more [about me](/about).

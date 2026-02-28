@@ -1,0 +1,23 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Zack Verham"
+  navbar:
+    left:
+      - text: "Home"
+        href: index.qmd
+    right:
+      - text: "Posts"
+        href: posts/index.qmd
+      - text: "Writing"
+        href: writing.qmd
+      - text: "About"
+        href: about.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false

@@ -1,0 +1,9 @@
+/* Minimal custom styles */
+.navbar-brand {
+  font-weight: 600;
+}
+
+.post-listing-date {
+  color: #6c757d;
+  font-size: 0.9em;
+}
