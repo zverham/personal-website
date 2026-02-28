@@ -8,6 +8,6 @@ echo "Installing Quarto ${QUARTO_VERSION}..."
 wget -q "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/${DEB}"
 dpkg -x "${DEB}" .
 
-export PATH="$PATH:$(pwd)/opt/quarto/${QUARTO_VERSION}/bin"
+export PATH="$PATH:$(pwd)/opt/quarto/bin"
 
 quarto render
