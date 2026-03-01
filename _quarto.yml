@@ -13,6 +13,8 @@ website:
     right:
       - text: "Posts"
         href: posts/index.qmd
+      - text: "Now"
+        href: now.qmd
       - text: "Writing"
         href: writing.qmd
       - text: "Talks"
