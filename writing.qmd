@@ -2,6 +2,11 @@
 title: "Writing"
 ---
 
+## Posit Blog
+
+- [Implement Dynamic User Identity on Posit Connect](https://posit.co/blog/implement-dynamic-user-identity-posit-connect/)
+- [Using Service Account Identities on Posit Connect](https://posit.co/blog/using-service-account-identities-posit-connect/)
+
 ## Mockingbird
 
 - [The King in Purple: Cosmic Horror and the Cosmic Christ](https://mbird.com/2021/03/the-king-in-purple-cosmic-horror-and-the-cosmic-christ/)

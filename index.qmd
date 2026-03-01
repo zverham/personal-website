@@ -16,7 +16,7 @@ listing:
 I write here about whatever catches my interest — computer science, hobby programming, books, podcasts, music, tabletop RPGs, travel, and whatever else seems worth sharing.
 
 ::: {.hero-links}
-[Posts](/posts) [Writing](/writing) [About](/about)
+[Posts](/posts) [Writing](/writing) [Talks](/talks) [About](/about)
 :::
 :::
 

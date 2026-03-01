@@ -1,0 +1,5 @@
+---
+title: "Talks"
+---
+
+- [Data-level permissions using Posit Connect (with Databricks, Snowflake, OAuth)](https://www.youtube.com/watch?v=ivEoeyWJzVY)
