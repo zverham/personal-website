@@ -1,11 +1,28 @@
 ---
 title: "Zack Verham"
-subtitle: "My little slice of the internet"
+subtitle: "Software engineer. Charlottesville, VA."
 page-layout: full
+listing:
+  - id: recent-posts
+    contents: "posts/*/index.qmd"
+    sort: "date desc"
+    max-items: 5
+    type: default
+    date-format: "MMM D, YYYY"
+    fields: [date, title]
 ---
 
-Hi, I'm Zack. I live in Charlottesville, VA. This is my cozy little corner of the internet.
+::: {.hero-intro}
+I write here about whatever catches my interest — computer science, hobby programming, books, podcasts, music, tabletop RPGs, travel, and whatever else seems worth sharing.
 
-I'm a software engineer by trade, but I write here about whatever catches my interest — computer science, hobby programming, books, podcasts, music, tabletop RPGs, travel, and whatever else seems worth sharing.
+::: {.hero-links}
+[Posts](/posts) [Writing](/writing) [About](/about)
+:::
+:::
 
-Take a look at my [posts](/posts), see some of my [writing](/writing) elsewhere, or learn more [about me](/about).
+---
+
+### Recent Posts
+
+::: {#recent-posts}
+:::
