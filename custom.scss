@@ -33,6 +33,12 @@ $border-radius-lg: 0;
 body {
   font-family: 'IM Fell English', Georgia, serif;
   background-color: #110e08;
+  // Vignette (dark edges) + fractal noise grain, layered
+  background-image:
+    radial-gradient(ellipse at 50% 0%, transparent 55%, rgba(0, 0, 0, 0.6) 100%),
+    url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyMDAnIGhlaWdodD0nMjAwJz48ZmlsdGVyIGlkPSduJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC43NScgbnVtT2N0YXZlcz0nNCcgc3RpdGNoVGlsZXM9J3N0aXRjaCcvPjxmZUNvbG9yTWF0cml4IHR5cGU9J3NhdHVyYXRlJyB2YWx1ZXM9JzAnLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMjAwJyBoZWlnaHQ9JzIwMCcgZmlsdGVyPSd1cmwoI24pJyBvcGFjaXR5PScwLjA0Jy8+PC9zdmc+");
+  background-attachment: fixed, scroll;
+  background-size: cover, 200px 200px;
 }
 
 // ── Navbar ─────────────────────────────────────────────────────────────────
@@ -140,6 +146,15 @@ pre {
   padding: 1rem;
 }
 
+// ── Candle flicker animation ─────────────────────────────────────────────────
+
+@keyframes candle-flicker {
+  0%, 100% { text-shadow: 0 0 32px rgba(196, 154, 42, 0.40); }
+  20%       { text-shadow: 0 0 22px rgba(196, 154, 42, 0.26), 0 0 6px rgba(196, 154, 42, 0.10); }
+  50%       { text-shadow: 0 0 42px rgba(196, 154, 42, 0.54), 0 0 18px rgba(196, 154, 42, 0.22); }
+  75%       { text-shadow: 0 0 28px rgba(196, 154, 42, 0.34); }
+}
+
 // ── Landing page hero ───────────────────────────────────────────────────────
 
 .quarto-title-block {
@@ -152,6 +167,7 @@ pre {
     letter-spacing: 0.1em;
     text-shadow: 0 0 32px rgba(196, 154, 42, 0.4);
     margin-bottom: 0.4rem;
+    animation: candle-flicker 5s ease-in-out infinite;
   }
 
   .subtitle {
