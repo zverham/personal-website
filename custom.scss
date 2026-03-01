@@ -196,6 +196,16 @@ pre {
   border-bottom: 1px solid #3a2d1c;
 }
 
+// ── Images ─────────────────────────────────────────────────────────────────
+
+img {
+  max-width: 100%;
+  border: 1px solid #3a2d1c;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6), 0 0 8px rgba(184, 137, 42, 0.08);
+  display: block;
+  margin: 1.5rem auto;
+}
+
 // ── Blockquote ─────────────────────────────────────────────────────────────
 
 blockquote {
