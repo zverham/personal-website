@@ -13,7 +13,7 @@ As a first (and maybe final, who knows) step towards the end goal of a well-writ
 
 ## The End Result
 
-![Dungeon](/assets/11-21-2020/dungeon.png)
+![Dungeon](assets/dungeon.png)
 
 Here’s where I’ve been able to get as a first draft of the process - as you can see, the core generator is able to construct evenly-spaced rooms across the map which are connected by hallways. Of course, empty rooms and hallways would be quite boring for a dungeon delver to explore, so I wanted to throw in some additional content to create more interesting spaces for adventure. 
 

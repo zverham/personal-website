@@ -5,7 +5,7 @@ date: 2022-04-27
 
 Some friends and I have started tinkering with building a [Roguelike](https://en.wikipedia.org/wiki/Roguelike) in Go - mostly for the fun of it, but at least partially to get some practice writing and thinking about problems in Go. 
 
-| ![roguelike](/assets/2022-04-27-goguelike/roguelike.png) |
+| ![roguelike](assets/roguelike.png) |
 |:--:|
 | *Fight cultists and bats in your browser [here](https://goofy-lamport-0fbbf0.netlify.app/)!*|
 
